@@ -33,7 +33,7 @@ fn main() {
         )
         .expect("failed to write to `/tmp/.kernver/downloadkern`");
         //---------------------------------------------------------------
-        try!(
+        r#try!(
             Command::new("x-terminal-emulator")
             .spawn();
         );
