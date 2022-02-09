@@ -1,2 +1,2 @@
 # kernver
-stupid kernel thing I wrote to check for updates
+stupid thing I wrote to check for linux kernel updates
