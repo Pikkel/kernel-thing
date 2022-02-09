@@ -27,7 +27,7 @@ fn main() {
             .expect("failed to write to `/tmp/.kernver/downloadkern`");
         downloadkern.write_all(
            ("curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned()
-                + &ver
+                + &ver.trim()
                + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb\">).*(?=</a.*)'")
                .as_bytes(),
         )
