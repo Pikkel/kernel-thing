@@ -39,6 +39,6 @@ fn main() {
         // webbrowser::open(&*("https://kernel.ubuntu.com/~kernel-ppa/mainline/v".to_owned() + &ver));
         thread::sleep(time::Duration::from_secs(5));
         // thread::sleep(time::Duration::from_secs(86400));
+        Ok(());
     }
-    Ok(());
 }
