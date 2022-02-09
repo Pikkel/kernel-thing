@@ -19,7 +19,6 @@ fn main() {
         let mut ver = String::new();
         kernver.read_to_string(&mut ver).unwrap();
         let mut kernpkgs = std::fs::File::create("/tmp/.kernver/kernpkgs").expect("failed to create `/tmp/.kernver/kernpkgs`");
-        // TODO: make the commands not go into 4 lines
         // curl -s https://kernel.ubuntu.com/\~kernel-ppa/mainline/v5.16.8/amd64/ | grep -A1 'href=' | grep -oP '(?<=deb">).*(?=lowlatency).*(?=</a.*)'
         // curl -s https://kernel.ubuntu.com/\~kernel-ppa/mainline/v5.16.8/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb">).*(?=</a.*)'
         let mut downloadkern =
