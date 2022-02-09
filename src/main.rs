@@ -33,11 +33,8 @@ fn main() {
         )
         .expect("failed to write to `/tmp/.kernver/downloadkern`");
         //---------------------------------------------------------------
-        r#try!(
             Command::new("x-terminal-emulator")
-            .spawn()
-        );    
-        Ok(())
+            .spawn()?;
         //---------------------------------------------------------------
         // webbrowser::open(&*("https://kernel.ubuntu.com/~kernel-ppa/mainline/v".to_owned() + &ver));
         thread::sleep(time::Duration::from_secs(5));
