@@ -1,0 +1,1 @@
+curl -s https://kernel.org | grep -A1 'stable:' | grep -oP '(?<=strong>).*(?=</strong.*)' > /tmp/kernver-latest
