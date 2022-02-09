@@ -36,9 +36,8 @@ fn main() {
         r#try!(
             Command::new("x-terminal-emulator")
             .spawn()
-            
-            Ok(())
-        );
+        );    
+        Ok(())
         //---------------------------------------------------------------
         // webbrowser::open(&*("https://kernel.ubuntu.com/~kernel-ppa/mainline/v".to_owned() + &ver));
         thread::sleep(time::Duration::from_secs(5));
