@@ -1,7 +1,7 @@
 use std::{io::Read, process::Command, thread, time};
 use webbrowser;
 
-// TODO: add something to open a terminal to update and after to install the lowlatency debs
+// TODO: remove the webbrowser part and make it download and hopefully install the pkgs
 /*
     linux-headers-VERSION-NUMBER_all.deb
     linux-headers-VERSION-NUMBER_amd64.deb
@@ -14,6 +14,7 @@ fn main() {
     loop {
         // wondering if I can make it download from https://kernel.ubuntu.com/ automatically (even if I write it in a stupid way)
         Command::new("bash")
+            // command from here >> https://stackoverflow.com/questions/25078065/how-to-check-latest-kernel-version-by-bash
             .arg("./getkernel")
             .spawn()
             .expect("failed step 0");
