@@ -32,6 +32,12 @@ fn main() {
                .as_bytes(),
         )
         .expect("failed to write to `/tmp/.kernver/downloadkern`");
+        //---------------------------------------------------------------
+        try!(
+            Command::new("x-terminal-emulator")
+            .spawn();
+        );
+        //---------------------------------------------------------------
         // webbrowser::open(&*("https://kernel.ubuntu.com/~kernel-ppa/mainline/v".to_owned() + &ver));
         thread::sleep(time::Duration::from_secs(5));
         // thread::sleep(time::Duration::from_secs(86400));
