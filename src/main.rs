@@ -1,7 +1,7 @@
 use std::{thread, time};
 use webbrowser;
 
-// TODO: add something to open a terminal to update and after to install the debs
+// TODO: add something to open a terminal to update and after to install the lowlatency debs
 /*
     linux-headers-VERSION-NUMBER_all.deb
     linux-headers-VERSION-NUMBER_amd64.deb
