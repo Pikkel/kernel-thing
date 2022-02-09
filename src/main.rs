@@ -18,17 +18,18 @@ fn main() {
         let mut kernver = std::fs::File::open("/tmp/.kernver/kern-latest").unwrap();
         let mut ver = String::new();
         kernver.read_to_string(&mut ver).unwrap();
+        let mut kernpkgs = std::fs::File::create("/tmp/.kernver/kernpkgs").expect("failed to create `/tmp/.kernver/kernpkgs`");
         // TODO: make the commands not go into 4 lines
         // curl -s https://kernel.ubuntu.com/\~kernel-ppa/mainline/v5.16.8/amd64/ | grep -A1 'href=' | grep -oP '(?<=deb">).*(?=lowlatency).*(?=</a.*)'
         // curl -s https://kernel.ubuntu.com/\~kernel-ppa/mainline/v5.16.8/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb">).*(?=</a.*)'
         let mut downloadkern =
             std::fs::File::create("/tmp/.kernver/downloadkern").expect("failed to create `/tmp/.kernver/downloadkern`");
-        downloadkern.write_all(("curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned() + &ver.trim() + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=deb\">).*(?=lowlatency).*(?=</a.*)'\n").as_bytes())
+        downloadkern.write_all(("curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned() + &ver.trim() + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=deb\">).*(?=lowlatency).*(?=</a.*)' > /tmp/.kernver/kernpkgs\n").as_bytes())
             .expect("failed to write to `/tmp/.kernver/downloadkern`");
         downloadkern.write_all(
            ("curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned()
                 + &ver.trim()
-               + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb\">).*(?=</a.*)'")
+               + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb\">).*(?=</a.*)' >> /tmp/.kernver/kernpkgs")
                .as_bytes(),
         )
         .expect("failed to write to `/tmp/.kernver/downloadkern`");
