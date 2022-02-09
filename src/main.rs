@@ -23,17 +23,15 @@ fn main() {
         // curl -s https://kernel.ubuntu.com/\~kernel-ppa/mainline/v5.16.8/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb">).*(?=</a.*)'
         let mut downloadkern =
             std::fs::File::create("/tmp/.kernver/downloadkern").expect("failed to create `/tmp/.kernver/downloadkern`");
-        downloadkern.write_all(("curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned() + &ver + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=deb\">).*(?=lowlatency).*(?=</a.*)'\n" + &"curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned()
-                + &ver
-                + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb\">).*(?=</a.*)'").as_bytes())
+        downloadkern.write_all(("curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned() + &ver + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=deb\">).*(?=lowlatency).*(?=</a.*)'\n").as_bytes())
             .expect("failed to write to `/tmp/.kernver/downloadkern`");
-        // downloadkern.write_all(
-        //    ("curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned()
-        //        + &ver
-        //        + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb\">).*(?=</a.*)'")
-        //        .as_bytes(),
-        // )
-        // .expect("failed to write to `/tmp/.kernver/downloadkern`");
+        downloadkern.write_all(
+           ("curl -s https://kernel.ubuntu.com/\\~kernel-ppa/mainline/v".to_owned()
+                + &ver
+               + "/amd64/ | grep -A1 'href=' | grep -oP '(?<=all.deb\">).*(?=</a.*)'")
+               .as_bytes(),
+        )
+        .expect("failed to write to `/tmp/.kernver/downloadkern`");
         // webbrowser::open(&*("https://kernel.ubuntu.com/~kernel-ppa/mainline/v".to_owned() + &ver));
         thread::sleep(time::Duration::from_secs(5));
         // thread::sleep(time::Duration::from_secs(86400));
