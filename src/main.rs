@@ -6,7 +6,8 @@ use std::{fs, io::Read, io::Write, process::Command, thread, time};
 fn main() {
     fs::create_dir_all("/tmp/.kernver/");
     loop {
-        Command::new("uname")
+        Command::new("bash")
+            .arg("uname")
             .arg("-r")
             .arg(">")
             .arg("/tmp/.kernver/machinekernver")
