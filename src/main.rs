@@ -1,6 +1,6 @@
 use std::{fs, io::Read, io::Write, process::Command, thread, time};
 
-// TODO: remove the webbrowser part and make it download and hopefully install the pkgs
+// TODO: make it download and hopefully install the pkgs
 
 #[allow(unused_must_use)]
 fn main() {
