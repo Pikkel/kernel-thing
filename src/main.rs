@@ -61,8 +61,7 @@ fn main() {
                 //---------------------------------------------------------------
                 Command::new("x-terminal-emulator").spawn();
                 //---------------------------------------------------------------
-                thread::sleep(time::Duration::from_secs(5));
-                // thread::sleep(time::Duration::from_secs(86400));
+                thread::sleep(time::Duration::from_secs(5/*86400*/));
             }
         }
     }
